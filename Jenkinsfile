@@ -1,5 +1,7 @@
 pipeline{
-  stages {   
+  agent any
+
+  stages {
     stage('SCM Checkout'){
         git credentialsId: 'jkm-github', url:  'https://github.com/j-kyle-moore/spring-boot-mongo-docker.git',branch: '15sep21'
     }
