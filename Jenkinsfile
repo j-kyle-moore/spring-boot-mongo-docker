@@ -16,7 +16,7 @@ pipeline {
     stage('Maven Clean Package') {
       steps {
         //sh $mavenCMD clean package
-        echo Maven clean package
+        echo 'Maven clean package'
       }
     }
   }
