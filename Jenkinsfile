@@ -1,7 +1,3 @@
-//Define vars
-def mavenHome =  tool name: "Maven-3.8.2", type: "maven"
-def mavenCMD = "${mavenHome}/bin/mvn"
-
 pipeline {
   agent any
 
@@ -20,9 +16,13 @@ pipeline {
     stage('Maven Clean Package') {
       steps {
         //sh $mavenCMD clean package
-        echo 'Maven clean package'
-        echo "Maven home is ${mavenHome}"
-        echo "Maven cmd is ${mavenCMD}"
+        script {
+          env.mavenHome = tool name: "Maven-3.8.2", type: "maven"
+          env.mavenCMD = "${mavenHome}/bin/mvn"
+          echo 'Maven clean package'
+          echo "Maven home is ${mavenHome}"
+          echo "Maven cmd is ${mavenCMD}"
+        }
       }
     }
   }
