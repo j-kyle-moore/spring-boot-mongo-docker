@@ -1,5 +1,11 @@
 pipeline {
   agent any
+
+  environment {
+    mavenHome = tool(name: 'Maven-3.8.2', type: 'maven')
+    mavenCMD = "${mavenHome}/bin/mvn"
+  }
+  
   stages {
     stage('SCM Checkout') {
       steps {
@@ -9,11 +15,8 @@ pipeline {
 
     stage('Maven Clean Package') {
       steps {
-        def mavenHome = tool(name: 'Maven-3.8.2', type: 'maven')
-        def mavenCMD = "${mavenHome}/bin/mvn"
         sh $mavenCMD clean package
       }
     }
-
   }
 }
