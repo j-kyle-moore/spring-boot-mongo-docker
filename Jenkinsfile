@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'jenkins/ssh-agent'
+    }
+
+  }
   stages {
     stage('SCM Checkout') {
       steps {
@@ -22,12 +27,7 @@ pipeline {
     }
 
     stage('Build Docker Image') {
-      agent {
-        node {
-          label 'jenkins-docker'
-        }
-
-      }
+      agent any
       steps {
         echo 'Building docker image...'
         sh 'docker build -t eaddev/spring-boot-mongo .'
