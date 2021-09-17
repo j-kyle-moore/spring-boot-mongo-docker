@@ -5,7 +5,7 @@ pipeline {
     mavenHome = tool(name: 'Maven-3.8.2', type: 'maven')
     mavenCMD = "${mavenHome}/bin/mvn"
   }
-  
+
   stages {
     stage('SCM Checkout') {
       steps {
@@ -15,7 +15,8 @@ pipeline {
 
     stage('Maven Clean Package') {
       steps {
-        sh $mavenCMD clean package
+        //sh $mavenCMD clean package
+        echo Maven clean package
       }
     }
   }
