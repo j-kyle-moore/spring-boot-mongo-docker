@@ -22,8 +22,15 @@ pipeline {
     }
 
     stage('Build Docker Image') {
+      agent {
+        node {
+          label 'docker'
+        }
+
+      }
       steps {
         echo 'Building docker image...'
+        sh 'docker build -t eaddev/spring-boot-mongo .'
       }
     }
 
