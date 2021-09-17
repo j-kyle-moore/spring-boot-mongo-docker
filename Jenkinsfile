@@ -10,7 +10,8 @@ pipeline {
     stage('Maven Clean Package') {
       steps {
         tool(name: 'Maven-3.8.2', type: 'maven')
-        sh 'mvn clean package'
+        sh '''mavenCMD=/bin/mvn
+$mavenCMD clean package'''
       }
     }
 
