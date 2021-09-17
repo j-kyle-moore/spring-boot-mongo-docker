@@ -15,13 +15,13 @@ pipeline {
 
     stage('Maven Clean Package') {
       steps {
-        //sh $mavenCMD clean package
         script {
           env.mavenHome = tool name: "Maven-3.8.2", type: "maven"
           env.mavenCMD = "${mavenHome}/bin/mvn"
           echo 'Maven clean package'
-          echo "Maven home is ${env.mavenHome}"
-          echo "Maven cmd is ${env.mavenCMD}"
+          echo "Maven home is ${mavenHome}"
+          echo "Maven cmd is ${mavenCMD}"
+          sh "${mavenCMD} clean package"
         }
       }
     }
