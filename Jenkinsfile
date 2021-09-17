@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'jenkins/ssh-agent'
+      image 'docker/latest'
     }
 
   }
