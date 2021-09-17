@@ -1,10 +1,14 @@
+//Define vars
+def mavenHome =  tool name: "Maven-3.8.2", type: "maven"
+def mavenCMD = "${mavenHome}/bin/mvn"
+
 pipeline {
   agent any
 
-  environment {
+/*  environment {
     mavenHome = tool(name: 'Maven-3.8.2', type: 'maven')
     mavenCMD = "${mavenHome}/bin/mvn"
-  }
+  }  */
 
   stages {
     stage('SCM Checkout') {
@@ -17,8 +21,8 @@ pipeline {
       steps {
         //sh $mavenCMD clean package
         echo 'Maven clean package'
-        echo $mavenHome
-        echo $mavenCMD
+        echo "Maven home is ${mavenHome}"
+        echo "Maven cmd is ${mavenCMD}"
       }
     }
   }
