@@ -1,11 +1,5 @@
 pipeline {
   agent any
-
-/*  environment {
-    mavenHome = tool(name: 'Maven-3.8.2', type: 'maven')
-    mavenCMD = "${mavenHome}/bin/mvn"
-  }  */
-
   stages {
     stage('SCM Checkout') {
       steps {
@@ -23,7 +17,15 @@ pipeline {
           echo "Maven cmd is ${mavenCMD}"
           sh "${mavenCMD} clean package"
         }
+
       }
     }
+
+    stage('Build Docker Image') {
+      steps {
+        echo 'Building docker image...'
+      }
+    }
+
   }
 }
