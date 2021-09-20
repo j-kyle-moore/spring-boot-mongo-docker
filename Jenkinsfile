@@ -9,7 +9,6 @@ pipeline {
         )
     ])
 
-  }
   stages {
     stage('SCM Checkout') {
       steps {
@@ -27,7 +26,6 @@ pipeline {
           echo "Maven cmd is ${mavenCMD}"
           sh "${mavenCMD} clean package"
         }
-
       }
     }
 
@@ -38,6 +36,5 @@ pipeline {
         sh 'docker build -t eaddev/spring-boot-mongo .'
       }
     }
-
   }
 }
