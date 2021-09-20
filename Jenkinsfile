@@ -6,8 +6,8 @@ pipeline {
           claimName: 'maven-repo-storage',
           readOnly: false
           )
-      ])
-  }    
+      ]
+  }
 
   stages {
     stage('SCM Checkout') {
