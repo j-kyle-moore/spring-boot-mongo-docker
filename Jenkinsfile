@@ -1,12 +1,14 @@
 pipeline {
   agent {
-    volumes: [
-      persistentVolumeClaim(
-          mountPath: '/root/.m2/repository',
-          claimName: 'maven-repo-storage',
-          readOnly: false
-          )
-      ]
+    kubernetes {
+      volumes: [
+        persistentVolumeClaim(
+            mountPath: '/root/.m2/repository',
+            claimName: 'maven-repo-storage',
+            readOnly: false
+            )
+        ]
+    }
   }
 
   stages {
