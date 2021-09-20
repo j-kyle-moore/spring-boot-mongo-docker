@@ -1,8 +1,13 @@
 pipeline {
-  agent {
-    docker {
-      image 'docker/latest'
-    }
+  agent any
+
+  volumes: [
+    persistentVolumeClaim(
+        mountPath: '/root/.m2/repository',
+        claimName: 'maven-repo-storage',
+        readOnly: false
+        )
+    ])
 
   }
   stages {
