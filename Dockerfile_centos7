@@ -1,0 +1,40 @@
+FROM myheritage/centos7-git-java
+
+
+#labels for container catalog
+LABEL io.k8s.display-name="CentOs based docker image for Jenkins slave"
+
+ENV container oci
+ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Update the image with the latest packages (recommended)
+RUN yum update -y; yum clean all
+
+# Install EPEL repo
+#RUN yum install epel-release -y
+
+# Install docker
+#RUN yum install docker -y
+
+# Start docker
+#RUN systemctl start docker
+
+# Install OpenJDK
+# RUN yum install java-1.8.0-openjdk -y
+
+# add jenkins user
+RUN useradd jenkins
+
+# add docker group
+RUN groupadd docker
+
+#add jenkins user to docker group
+RUN usermod -aG docker jenkins
+
+#add jenkins user to dockerroot group
+RUN usermod -aG dockerroot jenkins
+
+# restart docker
+RUN systemctl restart docker
+
+CMD ["/bin/bash"]

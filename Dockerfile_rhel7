@@ -1,5 +1,5 @@
-#FROM koji/image-build
-FROM rhel7:latest
+#FROM registry.redhat.io/rhel7/rhel
+FROM myheritage/centos7-git-java
 
 MAINTAINER Red Hat, Inc.
 
@@ -17,7 +17,7 @@ ENV container oci
 ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Update the image with the latest packages (recommended)
- RUN yum update -y; yum clean all
+# RUN yum update -y; yum clean all
 
 # Install EPEL repo
 RUN yum install epel-release -y
@@ -29,19 +29,19 @@ RUN yum install docker -y
 RUN systemctl start docker
 
 # Install OpenJDK
-RUN yum install java-1.8.0-openjdk -y
+# RUN yum install java-1.8.0-openjdk -y
 
 # add jenkins user
-useradd jenkins
+RUN useradd jenkins
 
 # add docker group
-groupadd docker
+RUN groupadd docker
 
 #add jenkins user to docker group
-usermod -aG docker jenkins
+RUN usermod -aG docker jenkins
 
 #add jenkins user to dockerroot group
-usermod -aG dockerroot jenkins
+RUN usermod -aG dockerroot jenkins
 
 # restart docker
 RUN systemctl restart docker
