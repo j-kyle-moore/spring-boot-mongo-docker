@@ -1,13 +1,13 @@
-volumes: [
-  persistentVolumeClaim(
-      mountPath: '/root/.m2/repository',
-      claimName: 'maven-repo-storage',
-      readOnly: false
-      )
-  ])
-
 pipeline {
-  agent any
+  agent {
+    volumes: [
+      persistentVolumeClaim(
+          mountPath: '/root/.m2/repository',
+          claimName: 'maven-repo-storage',
+          readOnly: false
+          )
+      ])
+  }    
 
   stages {
     stage('SCM Checkout') {
