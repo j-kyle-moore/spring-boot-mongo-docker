@@ -34,7 +34,7 @@ pipeline {
         echo "Which docker ..."
         sh "which docker"
         echo "Checking docker version..."
-        sh "${dockerCMD} -v"
+        sh "${dockerCMD} --version"
         echo "Building docker image..."
         sh "${dockerCMD} build -t eaddev/spring-boot-mongo ."
       }
