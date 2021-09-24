@@ -7,18 +7,18 @@ pipeline {
       }
     }
 
-    stage('Maven Clean Package') {
-      steps {
-        script {
-          env.mavenHome = tool name: "Maven-3.8.2", type: "maven"
-          env.mavenCMD = "${mavenHome}/bin/mvn"
-          echo 'Maven clean package'
-          echo "Maven home is ${mavenHome}"
-          echo "Maven cmd is ${mavenCMD}"
-          sh "${mavenCMD} clean package"
-        }
-      }
-    }
+    // stage('Maven Clean Package') {
+    //   steps {
+    //     script {
+    //       env.mavenHome = tool name: "Maven-3.8.2", type: "maven"
+    //       env.mavenCMD = "${mavenHome}/bin/mvn"
+    //       echo 'Maven clean package'
+    //       echo "Maven home is ${mavenHome}"
+    //       echo "Maven cmd is ${mavenCMD}"
+    //       sh "${mavenCMD} clean package"
+    //     }
+    //   }
+    // }
 
     stage('Build Docker Image') {
       agent any
