@@ -30,7 +30,7 @@ pipeline {
           env.PATH = "${dockerHome}/bin:${env.PATH}"
         }
         echo "Docker home is ${dockerHome}"
-        echo "Docker cmd is ${dockerHome}"
+        echo "Docker cmd is ${dockerCMD}"
         echo "Which docker ..."
         sh "which docker"
         echo "Checking docker version..."
