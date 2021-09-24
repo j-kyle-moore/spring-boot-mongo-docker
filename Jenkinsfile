@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent none
   stages {
     stage('SCM Checkout') {
       steps {
@@ -23,8 +23,8 @@ pipeline {
 
     stage('Build Docker Image') {
       agent {
-        dockerfile {
-          filename './Dockerfile'
+        docker {
+          image 'openjdk:8-alpine'
         }
 
       }
