@@ -1,15 +1,5 @@
 pipeline {
-  agent {
-    kubernetes {
-      volumes: [
-        persistentVolumeClaim(
-            mountPath: '/root/.m2/repository',
-            claimName: 'maven-repo-storage',
-            readOnly: false
-            )
-        ]
-    }
-  }
+  agent any
 
   stages {
     stage('SCM Checkout') {
