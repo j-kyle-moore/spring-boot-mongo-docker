@@ -17,7 +17,6 @@ pipeline {
           echo "Maven cmd is ${mavenCMD}"
           sh "${mavenCMD} clean package"
         }
-
       }
     }
 
@@ -28,17 +27,16 @@ pipeline {
           env.dockerHome = tool name: 'jenkinsDocker'
           env.dockerCMD = "${dockerHome}/bin/docker"
           env.PATH = "${dockerHome}/bin:${env.PATH}"
+          echo "Docker home is ${dockerHome}"
+          echo "Docker cmd is ${dockerCMD}"
+          echo "Which docker ..."
+          sh "which docker"
+          echo "Checking docker version..."
+          sh "${dockerCMD} --version"
+          echo "Building docker image..."
+          sh "${dockerCMD} build -t eaddev/spring-boot-mongo ."
         }
-        echo "Docker home is ${dockerHome}"
-        echo "Docker cmd is ${dockerCMD}"
-        echo "Which docker ..."
-        sh "which docker"
-        echo "Checking docker version..."
-        sh "${dockerCMD} --version"
-        echo "Building docker image..."
-        sh "${dockerCMD} build -t eaddev/spring-boot-mongo ."
       }
     }
-
   }
 }
