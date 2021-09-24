@@ -1,6 +1,5 @@
 pipeline {
   agent any
-
   stages {
     stage('SCM Checkout') {
       steps {
@@ -18,15 +17,22 @@ pipeline {
           echo "Maven cmd is ${mavenCMD}"
           sh "${mavenCMD} clean package"
         }
+
       }
     }
 
     stage('Build Docker Image') {
-      agent any
+      agent {
+        dockerfile {
+          filename './Dockerfile'
+        }
+
+      }
       steps {
         echo 'Building docker image...'
         sh 'docker build -t eaddev/spring-boot-mongo .'
       }
     }
+
   }
 }
