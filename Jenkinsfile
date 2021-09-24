@@ -27,7 +27,7 @@ pipeline {
     // }
 
     stage('Build Docker Image') {
-      def dockerHome = tool 'jenkinsDocker'
+      env.dockerHome = tool name: "jenkinsDocker"
       env.PATH = "${dockerHome}/bin:${env.PATH}"
       agent {
         docker {
