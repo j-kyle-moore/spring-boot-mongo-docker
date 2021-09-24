@@ -21,12 +21,14 @@ pipeline {
       }
     }
 
-    stage('Initialize'){
-        def dockerHome = tool 'myDocker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-    }
-    
+    // stage('Initialize Docker'){
+    //     def dockerHome = tool 'jenkinsDocker'
+    //     env.PATH = "${dockerHome}/bin:${env.PATH}"
+    // }
+
     stage('Build Docker Image') {
+      def dockerHome = tool 'jenkinsDocker'
+      env.PATH = "${dockerHome}/bin:${env.PATH}"
       agent {
         docker {
           image 'openjdk:8-alpine'
