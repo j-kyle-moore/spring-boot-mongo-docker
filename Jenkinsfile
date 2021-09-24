@@ -25,6 +25,8 @@ pipeline {
       agent {
         docker {
           image 'jenkinsDocker'
+          args '''def dockerHome = tool \'jenkinsDocker\'
+env.PATH = "${dockerHome}/bin:${env.PATH}"'''
         }
 
       }
