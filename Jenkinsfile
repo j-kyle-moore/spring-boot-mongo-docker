@@ -22,14 +22,14 @@ pipeline {
 
     stage('Build Docker Image') {
       steps {
-        script {
-          env.dockerHome = tool name: "jenkinsDocker"
-          env.PATH = "${dockerHome}/bin:${env.PATH}"
+        // script {
+        //   env.dockerHome = tool name: "jenkinsDocker"
+        //   env.PATH = "${dockerHome}/bin:${env.PATH}"
           echo 'Checking docker version...'
           sh 'docker -v'
           echo 'Building docker image...'
           sh 'docker build -t eaddev/spring-boot-mongo .'
-        }
+        // }
       }
     }
   }
