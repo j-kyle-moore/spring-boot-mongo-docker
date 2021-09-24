@@ -17,6 +17,7 @@ pipeline {
           echo "Maven cmd is ${mavenCMD}"
           sh "${mavenCMD} clean package"
         }
+
       }
     }
 
@@ -34,11 +35,13 @@ pipeline {
           echo "Which docker ..."
           sh "which docker"
           echo "Checking docker version..."
-          sh "${dockerCMD} --version"
+          sh '${dockerCMD} --version'
           echo "Building docker image..."
           sh "${dockerCMD} build -t eaddev/spring-boot-mongo ."
         }
+
       }
     }
+
   }
 }
