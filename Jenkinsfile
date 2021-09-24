@@ -22,17 +22,13 @@ pipeline {
     }
 
     stage('Build Docker Image') {
-      agent {
-        docker {
-          image 'jenkinsDocker'
-        }
-
-      }
+      agent any
       steps {
         script {
           env.dockerHome = tool name: 'jenkinsDocker'
           env.PATH = "${dockerHome}/bin:${env.PATH}"
         }
+
         echo 'Which docker ...'
         sh 'which docker'
         echo 'Checking docker version...'
