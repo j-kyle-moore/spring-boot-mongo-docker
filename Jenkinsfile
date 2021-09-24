@@ -15,7 +15,7 @@ pipeline {
           echo 'Maven clean package'
           echo "Maven home is ${mavenHome}"
           echo "Maven cmd is ${mavenCMD}"
-          // sh "${mavenCMD} clean package"
+          sh "${mavenCMD} clean package"
         }
       }
     }
@@ -33,7 +33,6 @@ pipeline {
           echo "Docker cmd is ${dockerCMD}"
           echo "Which docker ..."
           sh "which docker"
-          sh "docker run -entrypoint='/bin/bash' -i test"
           echo "Checking docker version..."
           sh "${dockerCMD} --version"
           echo "Building docker image..."
