@@ -17,7 +17,6 @@ pipeline {
           echo "Maven cmd is ${mavenCMD}"
           sh "${mavenCMD} clean package"
         }
-
       }
     }
 
