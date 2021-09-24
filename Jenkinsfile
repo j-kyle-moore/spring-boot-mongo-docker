@@ -25,12 +25,14 @@ pipeline {
       agent {
         docker {
           image 'jenkinsDocker'
-          args '''def dockerHome = tool \'jenkinsDocker\'
-env.PATH = "${dockerHome}/bin:${env.PATH}"'''
         }
 
       }
       steps {
+        script {
+          env.dockerHome = tool name: 'jenkinsDocker'
+          env.PATH = "${dockerHome}/bin:${env.PATH}"
+        }
         echo 'Checking docker version...'
         sh 'docker -v'
         echo 'Building docker image...'
