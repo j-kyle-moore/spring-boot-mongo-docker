@@ -26,15 +26,17 @@ pipeline {
       steps {
         script {
           env.dockerHome = tool name: 'jenkinsDocker'
+          env.dockerCMD = "${dockerHome}/bin/docker"
           env.PATH = "${dockerHome}/bin:${env.PATH}"
         }
-
-        echo 'Which docker ...'
-        sh 'which docker'
-        echo 'Checking docker version...'
-        sh 'docker -v'
-        echo 'Building docker image...'
-        sh 'docker build -t eaddev/spring-boot-mongo .'
+        echo "Docker home is ${dockerHome}"
+        echo "Docker cmd is ${dockerHome}"
+        echo "Which docker ..."
+        sh "which docker"
+        echo "Checking docker version..."
+        sh "${dockerCMD} -v"
+        echo "Building docker image..."
+        sh "${dockerCMD} build -t eaddev/spring-boot-mongo ."
       }
     }
 
