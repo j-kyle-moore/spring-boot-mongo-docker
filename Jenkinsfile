@@ -17,7 +17,6 @@ pipeline {
           echo "Maven cmd is ${mavenCMD}"
           sh "${mavenCMD} clean package"
         }
-
       }
     }
 
@@ -27,17 +26,18 @@ pipeline {
     // }
 
     stage('Build Docker Image') {
-      env.dockerHome = tool name: "jenkinsDocker"
-      env.PATH = "${dockerHome}/bin:${env.PATH}"
       agent {
         docker {
           image 'openjdk:8-alpine'
         }
-
       }
       steps {
-        echo 'Building docker image...'
-        sh 'docker build -t eaddev/spring-boot-mongo .'
+        script {
+          env.dockerHome = tool name: "jenkinsDocker"
+          env.PATH = "${dockerHome}/bin:${env.PATH}"
+          echo 'Building docker image...'
+          sh 'docker build -t eaddev/spring-boot-mongo .'
+        }
       }
     }
 
