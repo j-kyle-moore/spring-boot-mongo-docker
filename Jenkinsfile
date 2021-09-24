@@ -28,6 +28,8 @@ pipeline {
           env.dockerCMD = "${dockerHome}/bin/docker"
           env.PATH = "${dockerHome}/bin:${env.PATH}"
           echo "Docker home is ${dockerHome}"
+          echo "ll ${dockerHome}/bin"
+          sh "ll ${dockerHome}/bin"
           echo "Docker cmd is ${dockerCMD}"
           echo "Which docker ..."
           sh "which docker"
