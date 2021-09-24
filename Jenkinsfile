@@ -33,7 +33,7 @@ pipeline {
           echo "Docker cmd is ${dockerCMD}"
           echo "Which docker ..."
           sh "which docker"
-          sh "docker run -entrypoint="/bin/bash" -i test"
+          sh "docker run -entrypoint='/bin/bash' -i test"
           echo "Checking docker version..."
           sh "${dockerCMD} --version"
           echo "Building docker image..."
