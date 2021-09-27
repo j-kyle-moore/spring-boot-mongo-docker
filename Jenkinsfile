@@ -22,27 +22,10 @@ pipeline {
     }
 
     stage('Build Docker Image') {
-      agent any
+      agent rhel7
       steps {
         script {
-          env.dockerHome = tool name: 'jenkinsDocker'
-          env.dockerCMD = "${dockerHome}/bin/docker"
-          env.PATH = "${dockerHome}/bin:${env.PATH}"
-          echo "Docker home is ${dockerHome}"
-          echo "ls -l ${dockerHome}/bin"
-          sh "ls -l ${dockerHome}/bin"
-          echo "Docker cmd is ${dockerCMD}"
-          echo "Which docker ..."
-          sh "which docker"
-          echo "list docker directory"
-          sh "ls -l /home/jenkins/agent/tools/org.jenkinsci.plugins.docker.commons.tools.DockerTool/jenkinsDocker/bin/"
-          echo "Whoami ..."
-          sh "whoami"
-          sh "sleep 500"
-          echo "Checking docker version..."
-          sh '${dockerCMD} run --version'
-          echo "Building docker image..."
-          sh "${dockerCMD} build -t eaddev/spring-boot-mongo ."
+          sh "uname -a"
         }
       }
     }
