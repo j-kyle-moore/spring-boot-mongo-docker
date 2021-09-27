@@ -37,7 +37,7 @@ pipeline {
           echo "Whoami ..."
           sh "whoami"
           echo "Checking docker version..."
-          sh '${dockerCMD} --version'
+          sh '${dockerCMD} run --version'
           echo "Building docker image..."
           sh "${dockerCMD} build -t eaddev/spring-boot-mongo ."
         }
