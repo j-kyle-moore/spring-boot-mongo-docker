@@ -38,6 +38,7 @@ pipeline {
           sh "ls -l /home/jenkins/agent/tools/org.jenkinsci.plugins.docker.commons.tools.DockerTool/jenkinsDocker/bin/"
           echo "Whoami ..."
           sh "whoami"
+          sh "sleep 500"
           echo "Checking docker version..."
           sh '${dockerCMD} run --version'
           echo "Building docker image..."
