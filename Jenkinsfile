@@ -36,12 +36,13 @@ pipeline {
           sh "which docker"
           echo "list docker directory"
           sh "ls -l /home/jenkins/agent/tools/org.jenkinsci.plugins.docker.commons.tools.DockerTool/jenkinsDocker/bin/"
-          echo "Whoami ..."
-          sh "whoami"
-          echo "Checking docker version..."
-          sh '${dockerCMD} run --version'
-          echo "Building docker image..."
-          sh "${dockerCMD} build -t eaddev/spring-boot-mongo ."
+          docker.build 'eaddev:spring-boot-mongo'
+          // echo "Whoami ..."
+          // sh "whoami"
+          // echo "Checking docker version..."
+          // sh '${dockerCMD} run --version'
+          // echo "Building docker image..."
+          // sh "${dockerCMD} build -t eaddev/spring-boot-mongo ."
         }
 
       }
