@@ -34,6 +34,8 @@ pipeline {
           echo "Docker cmd is ${dockerCMD}"
           echo "Which docker ..."
           sh "which docker"
+          echo "Whoami ..."
+          sh "whoami"
           echo "Checking docker version..."
           sh '${dockerCMD} --version'
           echo "Building docker image..."
