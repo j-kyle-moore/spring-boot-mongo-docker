@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dockerhub-config
+  namespace: jenkins
+data:
+  config.json: |-
+    {
+      "credHelpers": {
+        "docker.io": "index-docker-io"
+      }
+    }

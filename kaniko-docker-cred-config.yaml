@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: docker-config
+  namespace: jenkins
+data:
+  config.json: |-
+    {
+      "credHelpers": {
+        "harbor.rke2-app.km.test": "harbor-km-test"
+      }
+    }
