@@ -1,7 +1,7 @@
 {
 	"auths": {
-		"https://harbor.rke2-app.km.test/v1/": {
-			"auth": "cm9ib3QramVua2lucy1yb2JvdDpWU1VLN2xnblZSbWtzQWNOYzN1dDlpV0k2NVNEUFpKcw=="
+		"https://index.docker.io/v2/": {
+			"auth": "a3lsZW1vb3JlOmExZTFiMzUzLTQ4MDQtNDFhMC1iYWFkLTY5OWY1NGNkYmU0Mw=="
 		}
 	}
 }

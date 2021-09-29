@@ -7,6 +7,6 @@ data:
   config.json: |-
     {
       "credHelpers": {
-        "docker.io": "index-docker-io"
+        "harbor.rke2-app.km.test": "harbor-km-test"
       }
     }
