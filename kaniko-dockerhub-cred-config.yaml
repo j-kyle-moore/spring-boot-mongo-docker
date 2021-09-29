@@ -7,6 +7,6 @@ data:
   config.json: |-
     {
       "credHelpers": {
-        "docker.io": "index-docker-io"
+        "docker.io": "index-docker-io-pw"
       }
     }

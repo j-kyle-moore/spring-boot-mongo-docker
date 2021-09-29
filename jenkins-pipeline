@@ -18,10 +18,19 @@ spec:
     volumeMounts:
       - name: docker-config
         mountPath: /kaniko/.docker
+    volumes:
+      - name: docker-config
+        configMap:
+          name: docker-config
   volumes:
-    - name: docker-config
-      configMap:
-        name: docker-config
+  - name: docker-config
+    projected:
+      sources:
+      - secret:
+          name: harbor-regcred
+          items:
+            - key: .dockerconfigjson
+              path: config.json
 """
     }
   }
@@ -47,7 +56,7 @@ spec:
         //git 'https://github.com/prabhatsharma/sample-microservice'
         container(name: 'kaniko') {
             sh '''
-            /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` `pwd`/config.json:/kaniko/.docker/config.json:ro --destination=kylemoore/jenkins-repo:latest --destination=kylemoore/jenkins-repo:v$BUILD_NUMBER --skip-tls-verify
+            /kaniko/executor --dockerfile `pwd`/Dockerfile  --context `pwd` --destination=eaddev/jenkinstest:latest --destination=eaddev/jenkinstest:v$BUILD_NUMBER
             '''
         }
       }
