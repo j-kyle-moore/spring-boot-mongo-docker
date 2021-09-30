@@ -16,18 +16,18 @@ spec:
     - cat
     tty: true
     volumeMounts:
-      - name: docker-config-rh
+      - name: docker-config-rh-un-pw
         mountPath: /kaniko/.docker
     volumes:
-      - name: docker-config-rh
+      - name: docker-config-rh-un-pw
         configMap:
-          name: docker-config-rh
+          name: docker-config-rh-un-pw
   volumes:
-  - name: docker-config-rh
+  - name: docker-config-rh-un-pw
     projected:
       sources:
       - secret:
-          name: regcred
+          name: regcred-rh
           items:
             - key: .dockerconfigjson
               path: config.json
