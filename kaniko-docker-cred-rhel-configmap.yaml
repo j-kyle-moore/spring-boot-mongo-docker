@@ -7,6 +7,6 @@ data:
   config.json: |-
     {
       "credHelpers": {
-        "registry.access.redhat.com": "rhel-containers-j7"
+        "registry.access.redhat.io": "rhel-containers-j7"
       }
     }
