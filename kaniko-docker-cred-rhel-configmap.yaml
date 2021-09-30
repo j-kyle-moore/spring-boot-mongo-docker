@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: docker-config-rh
+  namespace: jenkins
+data:
+  config.json: |-
+    {
+      "credHelpers": {
+        "registry.access.redhat.com": "rhel-containers-j7"
+      }
+    }

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: docker-config
+  name: docker-config-harbor-km
   namespace: jenkins
 data:
   config.json: |-
