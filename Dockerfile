@@ -1,5 +1,5 @@
-ARG BASE_REGISTRY=registry.access.redhat.com
-ARG BASE_IMAGE=ubi7/rhel7
+ARG BASE_REGISTRY=registry.access.redhat.io
+ARG BASE_IMAGE=rhel7
 ARG BASE_TAG=7.9-476
 FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG}
 
