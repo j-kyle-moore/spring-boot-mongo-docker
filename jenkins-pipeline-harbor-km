@@ -56,7 +56,7 @@ spec:
         //git 'https://github.com/prabhatsharma/sample-microservice'
         container(name: 'kaniko') {
             sh '''
-            /kaniko/executor --dockerfile `pwd`/Dockerfile  --context `pwd` --destination=harbor.rke2-app.km.test/eaddev/spring:latest --destination=harbor.rke2-app.km.test/eaddev/spring:v$BUILD_NUMBER --verbosity=debug --skip-tls-verify --skip-tls-verify-pull
+            /kaniko/executor --dockerfile `pwd`/Dockerfile  --context `pwd` `pwd`/config.json:/kaniko/.docker/config.json:ro --destination=harbor.rke2-app.km.test/eaddev/spring:latest --destination=harbor.rke2-app.km.test/eaddev/spring:v$BUILD_NUMBER --verbosity=debug --skip-tls-verify --skip-tls-verify-pull
             '''
         }
       }
