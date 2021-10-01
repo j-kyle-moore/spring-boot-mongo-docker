@@ -1,7 +1,7 @@
 {
 	"auths": {
 		"https://harbor.rke2-app.km.test/": {
-			"auth": "cm9ib3Q6d3RDWlIySEV3YUpvckVOaU8wc3R5QjVVYmVUSkZFbEM="
+			"auth": "cm9ib3QkZWFkZGV2Ond0Q1pSMkhFd2FKb3JFTmlPMHN0eUI1VWJlVEpGRWxD"
 		}
 	}
 }
