@@ -1,15 +1,15 @@
-#ARG BASE_REGISTRY=harbor.rke2-app.km.test
-#ARG BASE_IMAGE=eaddev/spring
-#ARG BASE_TAG=v112
-
-ARG BASE_REGISTRY=registry.access.redhat.com
-ARG BASE_IMAGE=rhel7
+ARG BASE_REGISTRY=harbor.rke2-app.km.test
+ARG BASE_IMAGE=eaddev/rhel7
 ARG BASE_TAG=7.9-476
+
+# ARG BASE_REGISTRY=registry.access.redhat.com
+# ARG BASE_IMAGE=rhel7
+# ARG BASE_TAG=7.9-476
 
 FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG}
 
 
-#docker pull harbor.rke2-app.km.test/eaddev/spring:v112
+#docker pull harbor.rke2-app.km.test/eaddev/rhel7:7.9-476
 #docker pull registry.access.redhat.com/rhel7/7.9-476
 
 
