@@ -1,0 +1,65 @@
+pipeline {
+  agent {
+    kubernetes {
+      //cloud 'kubernetes'
+      yaml """
+kind: Pod
+metadata:
+  name: kaniko
+  namespace: jenkins
+spec:
+  containers:
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:debug-539ddefcae3fd6b411a95982a830d987f4214251
+    imagePullPolicy: Always
+    command:
+    - cat
+    tty: true
+    volumeMounts:
+      - name: docker-config-rh-harbor-km
+        mountPath: /kaniko/.docker
+    volumes:
+      - name: docker-config-rh-harbor-km
+        configMap:
+          name: docker-config-rh-harbor-km
+  volumes:
+  - name: docker-config-rh-harbor-km
+    projected:
+      sources:
+      - secret:
+          name: regcred-harbor
+          items:
+            - key: .dockerconfigjson
+              path: config.json
+"""
+    }
+  }
+  stages {
+    stage('SCM Checkout'){
+      steps {
+        git(credentialsId: 'jkm-github', url: 'https://github.com/j-kyle-moore/spring-boot-mongo-docker.git', branch: '28sep24jenkinspl')
+      }
+    }
+
+    stage('Maven Clean Package') {
+      steps {
+        script {
+          env.mavenHome = tool name: "Maven-3.8.2", type: "maven"
+          env.mavenCMD = "${mavenHome}/bin/mvn"
+          sh "${mavenCMD} clean package"
+        }
+      }
+    }
+
+    stage('Build and Push with Kaniko') {
+      steps {
+        //git 'https://github.com/prabhatsharma/sample-microservice'
+        container(name: 'kaniko') {
+            sh '''
+            /kaniko/executor --dockerfile `pwd`/Dockerfile  --context `pwd` `pwd`/config.json:/kaniko/.docker/config.json:ro --destination=harbor.rke2-app.km.test/eaddev/spring:latest --destination=harbor.rke2-app.km.test/eaddev/spring:v$BUILD_NUMBER --verbosity=debug --skip-tls-verify --skip-tls-verify-pull
+            '''
+        }
+      }
+    }
+  }
+}
