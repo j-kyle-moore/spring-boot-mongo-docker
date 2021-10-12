@@ -1,0 +1,7 @@
+{
+  "credHelpers": {
+    "harbor.rke2-app.km.test": "harbor-km-test-robot"
+    "registry1.dso.mil": "registry1-dso-mil-km"
+    "registry.redhat.com": "rhel-containers-j7"
+  }
+}
