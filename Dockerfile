@@ -1,6 +1,10 @@
-ARG BASE_REGISTRY=harbor.rke2-app.km.test
-ARG BASE_IMAGE=eaddev/rhel7
-ARG BASE_TAG=7.9-476
+ARG BASE_REGISTRY=registry1.dso.mil
+ARG BASE_IMAGE=ironbank/redhat/ubi
+ARG BASE_TAG=ubi7@sha256:15db557097ef6c6705e5623cdf6de4c075f37478e7a5697b1754fcb35aae047e
+
+# ARG BASE_REGISTRY=harbor.rke2-app.km.test
+# ARG BASE_IMAGE=eaddev/rhel7
+# ARG BASE_TAG=7.9-476
 
 # ARG BASE_REGISTRY=registry.access.redhat.com
 # ARG BASE_IMAGE=rhel7
@@ -11,6 +15,7 @@ FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG}
 
 #docker pull harbor.rke2-app.km.test/eaddev/rhel7:7.9-476
 #docker pull registry.access.redhat.com/rhel7/7.9-476
+# docker pull registry1.dso.mil/ironbank/redhat/ubi/ubi7@sha256:15db557097ef6c6705e5623cdf6de4c075f37478e7a5697b1754fcb35aae047e
 
 
 #register the container
