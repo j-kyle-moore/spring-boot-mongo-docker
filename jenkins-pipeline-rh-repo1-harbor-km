@@ -16,21 +16,13 @@ spec:
     - cat
     tty: true
     volumeMounts:
-      - name: docker-config-harbor-km
+      - name: docker-config-master
         mountPath: /kaniko/.docker
-    volumes:
-      - name: docker-config-harbor-km
-        configMap:
-          name: docker-config-harbor-km
   volumes:
-  - name: docker-config-harbor-km
-    projected:
-      sources:
-      - secret:
-          name: regcred-harbor
-          items:
-            - key: .dockerconfigjson
-              path: config.json
+    - name: docker-config-master
+      configMap:
+        name: docker-config-master
+
 """
     }
   }
